@@ -2,7 +2,14 @@
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import { AUTHOR_NAME, EMAIL, GITHUB_URL, SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+
+const focusAreas = ['Web development', 'AI applications', 'Project notes', 'Learning logs'];
+const signalStats = [
+	{ label: 'Base', value: 'Chengdu' },
+	{ label: 'Major', value: 'Software' },
+	{ label: 'Focus', value: 'AI Apps' },
+];
 ---
 
 <!doctype html>
@@ -12,38 +19,484 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 	</head>
 	<body>
 		<Header />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This template
-				serves as a lightweight, minimally-styled starting point for anyone looking to build a personal
-				website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to
-				<a href="https://docs.astro.build/">read the docs</a>
-				or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out
-				<a href="https://github.com/Charca/astro-blog-template">astro-blog-template</a>
-				by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
+		<main class="home-page">
+			<section class="hero" aria-labelledby="home-title">
+				<div class="hero-backdrop" aria-hidden="true"></div>
+				<div class="hero-copy">
+					<p class="eyebrow">personal signal // 2026</p>
+					<h1 id="home-title">
+						<span>{AUTHOR_NAME}</span>
+						builds, learns, and ships in public.
+					</h1>
+					<p class="intro">
+						A personal blog for programming notes, AI workflow experiments, project reviews,
+						and the ideas that become clearer after enough practice.
+					</p>
+					<div class="actions" aria-label="Primary links">
+						<a class="primary-action" href="/blog">Read the blog</a>
+						<a class="ghost-action" href="/about">About LUSH</a>
+						<a class="ghost-action" href={GITHUB_URL} target="_blank" rel="noreferrer">GitHub</a>
+						<a class="ghost-action" href={`mailto:${EMAIL}`}>Email me</a>
+					</div>
+					<ul class="focus-list" aria-label="Topics">
+						{focusAreas.map((area) => <li>{area}</li>)}
+					</ul>
+				</div>
+
+				<aside class="signal-panel" aria-label="LUSH workspace signal">
+					<div class="panel-topbar">
+						<span></span>
+						<span></span>
+						<span></span>
+						<strong>LUSH.dev</strong>
+					</div>
+					<div class="console">
+						<p><span>const</span> identity = 'LUSH';</p>
+						<p><span>from</span> Chengdu, Sichuan;</p>
+						<p><span>build</span>('web software', 'ai apps');</p>
+						<p class="cursor">status: online</p>
+					</div>
+					<div class="panel-links" aria-label="Quick profile links">
+						<a href="/about">Profile</a>
+						<a href={GITHUB_URL} target="_blank" rel="noreferrer">GitHub</a>
+					</div>
+					<div class="signal-grid">
+						{
+							signalStats.map((item) => (
+								<div>
+									<span>{item.label}</span>
+									<strong>{item.value}</strong>
+								</div>
+							))
+						}
+					</div>
+				</aside>
+			</section>
 		</main>
 		<Footer />
 	</body>
 </html>
+
+<style>
+	:global(body) {
+		background:
+			linear-gradient(115deg, rgba(11, 18, 32, 0.98), rgba(14, 26, 44, 0.96) 44%, #f8fafc 44%),
+			#0b1220;
+	}
+
+	.home-page {
+		width: 100%;
+		max-width: none;
+		min-height: calc(100vh - 72px);
+		margin: 0;
+		padding: 0;
+		overflow: hidden;
+	}
+
+	.hero {
+		position: relative;
+		display: grid;
+		grid-template-columns: minmax(0, 1.02fr) minmax(320px, 0.78fr);
+		align-items: center;
+		gap: clamp(2rem, 5vw, 5rem);
+		min-height: calc(100vh - 72px);
+		padding: clamp(3rem, 7vw, 6rem) clamp(1.25rem, 6vw, 6rem);
+		color: #edf6ff;
+		isolation: isolate;
+	}
+
+	.hero::before {
+		position: absolute;
+		inset: 0;
+		z-index: -2;
+		content: '';
+		background:
+			linear-gradient(rgba(125, 211, 252, 0.08) 1px, transparent 1px),
+			linear-gradient(90deg, rgba(251, 191, 36, 0.08) 1px, transparent 1px);
+		background-size: 44px 44px;
+		mask-image: linear-gradient(90deg, black 0%, black 58%, transparent 86%);
+	}
+
+	.hero-backdrop {
+		position: absolute;
+		inset: 0;
+		z-index: -1;
+		background:
+			linear-gradient(135deg, rgba(20, 184, 166, 0.24), transparent 28%),
+			linear-gradient(315deg, rgba(244, 63, 94, 0.18), transparent 34%),
+			linear-gradient(90deg, transparent 0%, rgba(248, 250, 252, 0.9) 61%, #ffffff 100%);
+	}
+
+	.hero-backdrop::after {
+		position: absolute;
+		inset: 0;
+		content: '';
+		background: linear-gradient(
+			180deg,
+			transparent,
+			transparent 48%,
+			rgba(125, 211, 252, 0.16) 49%,
+			transparent 50%,
+			transparent
+		);
+		background-size: 100% 8px;
+		animation: scan 9s linear infinite;
+		opacity: 0.45;
+	}
+
+	.hero-copy {
+		max-width: 760px;
+	}
+
+	.eyebrow {
+		display: inline-flex;
+		margin: 0 0 1rem;
+		padding: 0.35rem 0.6rem;
+		border: 1px solid rgba(125, 211, 252, 0.45);
+		color: #67e8f9;
+		font-size: 0.78rem;
+		font-weight: 700;
+		line-height: 1;
+		text-transform: uppercase;
+		letter-spacing: 0.12em;
+		background: rgba(15, 23, 42, 0.64);
+	}
+
+	.hero h1 {
+		max-width: 10ch;
+		margin: 0;
+		color: #ffffff;
+		font-size: clamp(3rem, 9vw, 7.4rem);
+		line-height: 0.9;
+		text-wrap: balance;
+	}
+
+	.hero h1 span {
+		display: block;
+		color: #fbbf24;
+		text-shadow: 0 0 28px rgba(251, 191, 36, 0.34);
+	}
+
+	.intro {
+		max-width: 650px;
+		margin: 1.4rem 0 0;
+		color: #cbd5e1;
+		font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+		line-height: 1.65;
+	}
+
+	.actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.8rem;
+		margin-top: 2rem;
+	}
+
+	.actions a {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 48px;
+		padding: 0 1.05rem;
+		border: 1px solid rgba(226, 232, 240, 0.28);
+		color: #ffffff;
+		font-size: 0.95rem;
+		font-weight: 700;
+		line-height: 1;
+		text-decoration: none;
+		transition:
+			transform 180ms ease,
+			border-color 180ms ease,
+			background 180ms ease;
+	}
+
+	.actions a:hover {
+		transform: translateY(-2px);
+	}
+
+	.primary-action {
+		background: #f43f5e;
+		box-shadow: 0 14px 32px rgba(244, 63, 94, 0.28);
+	}
+
+	.primary-action:hover {
+		border-color: #fda4af;
+		background: #e11d48;
+		color: #ffffff;
+	}
+
+	.ghost-action {
+		background: rgba(15, 23, 42, 0.62);
+	}
+
+	.ghost-action:hover {
+		border-color: #67e8f9;
+		color: #ffffff;
+		background: rgba(8, 47, 73, 0.72);
+	}
+
+	.focus-list {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.65rem;
+		max-width: 680px;
+		margin: 2rem 0 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.focus-list li {
+		padding: 0.42rem 0.7rem;
+		border: 1px solid rgba(148, 163, 184, 0.28);
+		color: #dbeafe;
+		font-size: 0.86rem;
+		background: rgba(15, 23, 42, 0.5);
+	}
+
+	.signal-panel {
+		position: relative;
+		width: min(100%, 480px);
+		justify-self: end;
+		border: 1px solid rgba(15, 23, 42, 0.16);
+		background:
+			linear-gradient(145deg, rgba(255, 255, 255, 0.92), rgba(241, 245, 249, 0.86)),
+			#ffffff;
+		box-shadow:
+			0 24px 80px rgba(15, 23, 42, 0.24),
+			inset 0 1px 0 rgba(255, 255, 255, 0.9);
+		overflow: hidden;
+	}
+
+	.signal-panel::before {
+		position: absolute;
+		inset: 0;
+		content: '';
+		background:
+			linear-gradient(90deg, rgba(20, 184, 166, 0.12), transparent 34%),
+			linear-gradient(180deg, transparent, rgba(251, 191, 36, 0.12));
+		pointer-events: none;
+	}
+
+	.panel-topbar {
+		position: relative;
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 0.9rem 1rem;
+		border-bottom: 1px solid rgba(15, 23, 42, 0.1);
+		color: #0f172a;
+		font-size: 0.78rem;
+		text-transform: uppercase;
+		letter-spacing: 0.12em;
+	}
+
+	.panel-topbar span {
+		width: 0.68rem;
+		height: 0.68rem;
+		background: #14b8a6;
+	}
+
+	.panel-topbar span:nth-child(2) {
+		background: #fbbf24;
+	}
+
+	.panel-topbar span:nth-child(3) {
+		margin-right: 0.3rem;
+		background: #f43f5e;
+	}
+
+	.console {
+		position: relative;
+		padding: clamp(1rem, 4vw, 1.6rem);
+		color: #0f172a;
+		font-family:
+			ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
+			monospace;
+		font-size: clamp(0.88rem, 1.7vw, 1rem);
+		line-height: 1.9;
+	}
+
+	.console p {
+		margin: 0;
+		white-space: nowrap;
+	}
+
+	.console span {
+		color: #0f766e;
+		font-weight: 700;
+	}
+
+	.cursor {
+		display: inline-flex;
+		margin-top: 1rem;
+		padding: 0.22rem 0.5rem;
+		color: #ffffff;
+		background: #0f172a;
+	}
+
+	.cursor::after {
+		display: inline-block;
+		width: 0.45rem;
+		margin-left: 0.45rem;
+		background: #67e8f9;
+		content: '';
+		animation: blink 1s steps(1) infinite;
+	}
+
+	.panel-links {
+		position: relative;
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		border-top: 1px solid rgba(15, 23, 42, 0.1);
+	}
+
+	.panel-links a {
+		padding: 0.85rem 1rem;
+		color: #0f172a;
+		font-size: 0.82rem;
+		font-weight: 800;
+		text-align: center;
+		text-decoration: none;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		background: rgba(255, 255, 255, 0.45);
+		transition:
+			background 180ms ease,
+			color 180ms ease;
+	}
+
+	.panel-links a:first-child {
+		border-right: 1px solid rgba(15, 23, 42, 0.1);
+	}
+
+	.panel-links a:hover {
+		color: #ffffff;
+		background: #0f172a;
+	}
+
+	.signal-grid {
+		position: relative;
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		border-top: 1px solid rgba(15, 23, 42, 0.1);
+	}
+
+	.signal-grid div {
+		padding: 1rem;
+		border-right: 1px solid rgba(15, 23, 42, 0.1);
+	}
+
+	.signal-grid div:last-child {
+		border-right: 0;
+	}
+
+	.signal-grid span {
+		display: block;
+		color: #64748b;
+		font-size: 0.72rem;
+		text-transform: uppercase;
+		letter-spacing: 0.12em;
+	}
+
+	.signal-grid strong {
+		display: block;
+		margin-top: 0.2rem;
+		color: #0f172a;
+		font-size: clamp(1rem, 2.2vw, 1.25rem);
+	}
+
+	@keyframes scan {
+		from {
+			transform: translateY(-8px);
+		}
+		to {
+			transform: translateY(8px);
+		}
+	}
+
+	@keyframes blink {
+		50% {
+			opacity: 0;
+		}
+	}
+
+	@media (max-width: 900px) {
+		:global(body) {
+			background: #0b1220;
+		}
+
+		.hero {
+			grid-template-columns: 1fr;
+			min-height: auto;
+			padding-block: 3rem;
+		}
+
+		.hero::before {
+			mask-image: none;
+		}
+
+		.hero-backdrop {
+			background:
+				linear-gradient(135deg, rgba(20, 184, 166, 0.24), transparent 36%),
+				linear-gradient(315deg, rgba(244, 63, 94, 0.18), transparent 42%),
+				#0b1220;
+		}
+
+		.hero h1 {
+			max-width: 11ch;
+		}
+
+		.signal-panel {
+			justify-self: start;
+		}
+	}
+
+	@media (max-width: 560px) {
+		.hero {
+			padding: 2.25rem 1rem 3rem;
+		}
+
+		.eyebrow {
+			font-size: 0.68rem;
+		}
+
+		.hero h1 {
+			font-size: clamp(2.55rem, 15vw, 4.4rem);
+		}
+
+		.actions a {
+			width: 100%;
+		}
+
+		.focus-list li {
+			flex: 1 1 calc(50% - 0.65rem);
+			text-align: center;
+		}
+
+		.console p {
+			white-space: normal;
+		}
+
+		.signal-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.signal-grid div {
+			border-right: 0;
+			border-bottom: 1px solid rgba(15, 23, 42, 0.1);
+		}
+
+		.signal-grid div:last-child {
+			border-bottom: 0;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		* {
+			animation-duration: 1ms !important;
+			animation-iteration-count: 1 !important;
+			scroll-behavior: auto !important;
+			transition-duration: 1ms !important;
+		}
+	}
+</style>

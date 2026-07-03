@@ -11,59 +11,24 @@ type Props = CollectionEntry<'blog'>['data'];
 const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 ---
 
-<html lang="en">
+<html lang="zh-CN">
 	<head>
-		<BaseHead title={title} description={description} />
-		<style>
-			main {
-				width: calc(100% - 2em);
-				max-width: 100%;
-				margin: 0;
-			}
-			.hero-image {
-				width: 100%;
-			}
-			.hero-image img {
-				display: block;
-				margin: 0 auto;
-				border-radius: 12px;
-				box-shadow: var(--box-shadow);
-			}
-			.prose {
-				width: 720px;
-				max-width: calc(100% - 2em);
-				margin: auto;
-				padding: 1em;
-				color: rgb(var(--gray-dark));
-			}
-			.title {
-				margin-bottom: 1em;
-				padding: 1em 0;
-				text-align: center;
-				line-height: 1;
-			}
-			.title h1 {
-				margin: 0 0 0.5em 0;
-			}
-			.date {
-				margin-bottom: 0.5em;
-				color: rgb(var(--gray));
-			}
-			.last-updated-on {
-				font-style: italic;
-			}
-		</style>
+		<BaseHead title={title} description={description} image={heroImage} />
 	</head>
 
 	<body>
 		<Header />
-		<main>
+		<main class="post-page">
 			<article>
-				<div class="hero-image">
-					{heroImage && <Image width={1020} height={510} src={heroImage} alt="" />}
-				</div>
+				{
+					heroImage && (
+						<div class="hero-image">
+							<Image width={1120} height={560} src={heroImage} alt="" />
+						</div>
+					)
+				}
 				<div class="prose">
-					<div class="title">
+					<header class="title">
 						<div class="date">
 							<FormattedDate date={pubDate} />
 							{
@@ -75,8 +40,8 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 							}
 						</div>
 						<h1>{title}</h1>
-						<hr />
-					</div>
+						<p>{description}</p>
+					</header>
 					<slot />
 				</div>
 			</article>
@@ -84,3 +49,95 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 		<Footer />
 	</body>
 </html>
+
+<style>
+	:global(body) {
+		background:
+			linear-gradient(135deg, rgba(20, 184, 166, 0.08), transparent 28%),
+			linear-gradient(315deg, rgba(244, 63, 94, 0.06), transparent 32%),
+			#f8fafc;
+	}
+
+	.post-page {
+		width: 100%;
+		max-width: none;
+		margin: 0;
+		padding: clamp(1.5rem, 4vw, 3rem) 1rem clamp(3rem, 6vw, 5rem);
+	}
+
+	.hero-image {
+		width: min(1120px, 100%);
+		margin: 0 auto clamp(1.5rem, 4vw, 2.5rem);
+		border: 1px solid rgba(15, 23, 42, 0.1);
+		background: #ffffff;
+		box-shadow: 0 20px 60px rgba(15, 23, 42, 0.1);
+		overflow: hidden;
+	}
+
+	.hero-image img {
+		display: block;
+		width: 100%;
+		height: auto;
+		border-radius: 0;
+	}
+
+	.prose {
+		width: 760px;
+		max-width: calc(100% - 2em);
+		margin: auto;
+		padding: clamp(1.2rem, 4vw, 2.25rem);
+		border: 1px solid rgba(15, 23, 42, 0.08);
+		color: rgb(var(--gray-dark));
+		background: rgba(255, 255, 255, 0.88);
+		box-shadow: 0 18px 50px rgba(15, 23, 42, 0.06);
+	}
+
+	.title {
+		margin-bottom: 2rem;
+		padding-bottom: 1.4rem;
+		border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+		text-align: left;
+	}
+
+	.title h1 {
+		margin: 0;
+		color: #0f172a;
+		font-size: clamp(2rem, 5vw, 3.4rem);
+		line-height: 1.08;
+	}
+
+	.title p {
+		margin: 1rem 0 0;
+		color: #64748b;
+		font-size: 1rem;
+		line-height: 1.7;
+	}
+
+	.date {
+		margin-bottom: 0.8rem;
+		color: #0f766e;
+		font-size: 0.78rem;
+		font-weight: 900;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+	}
+
+	.last-updated-on {
+		margin-top: 0.3rem;
+		color: #64748b;
+		font-style: italic;
+		text-transform: none;
+		letter-spacing: 0;
+	}
+
+	@media (max-width: 720px) {
+		.post-page {
+			padding-inline: 0;
+		}
+
+		.hero-image,
+		.prose {
+			max-width: calc(100% - 2rem);
+		}
+	}
+</style>
