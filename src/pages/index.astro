@@ -35,7 +35,7 @@ const signalStats = [
 					<div class="actions" aria-label="Primary links">
 						<a class="primary-action" href="/blog">Read the blog</a>
 						<a class="ghost-action" href="/about">About LUSH</a>
-						<a class="ghost-action" href={GITHUB_URL} target="_blank" rel="noreferrer">GitHub</a>
+						<a class="ghost-action" href={GITHUB_URL} target="_blank" rel="noopener noreferrer">GitHub</a>
 						<a class="ghost-action" href={`mailto:${EMAIL}`}>Email me</a>
 					</div>
 					<ul class="focus-list" aria-label="Topics">
@@ -58,7 +58,7 @@ const signalStats = [
 					</div>
 					<div class="panel-links" aria-label="Quick profile links">
 						<a href="/about">Profile</a>
-						<a href={GITHUB_URL} target="_blank" rel="noreferrer">GitHub</a>
+						<a href={GITHUB_URL} target="_blank" rel="noopener noreferrer">GitHub</a>
 					</div>
 					<div class="signal-grid">
 						{
@@ -78,18 +78,15 @@ const signalStats = [
 </html>
 
 <style>
-	:global(body) {
-		background:
-			linear-gradient(115deg, rgba(11, 18, 32, 0.98), rgba(14, 26, 44, 0.96) 44%, #f8fafc 44%),
-			#0b1220;
-	}
-
 	.home-page {
 		width: 100%;
 		max-width: none;
 		min-height: calc(100vh - 72px);
 		margin: 0;
 		padding: 0;
+		background:
+			linear-gradient(115deg, rgba(22, 35, 36, 0.98), rgba(31, 55, 54, 0.95) 44%, #f8faf9 44%),
+			#162324;
 		overflow: hidden;
 	}
 
@@ -101,7 +98,7 @@ const signalStats = [
 		gap: clamp(2rem, 5vw, 5rem);
 		min-height: calc(100vh - 72px);
 		padding: clamp(3rem, 7vw, 6rem) clamp(1.25rem, 6vw, 6rem);
-		color: #edf6ff;
+		color: #f4fbff;
 		isolation: isolate;
 	}
 
@@ -111,8 +108,8 @@ const signalStats = [
 		z-index: -2;
 		content: '';
 		background:
-			linear-gradient(rgba(125, 211, 252, 0.08) 1px, transparent 1px),
-			linear-gradient(90deg, rgba(251, 191, 36, 0.08) 1px, transparent 1px);
+			linear-gradient(rgba(138, 166, 163, 0.12) 1px, transparent 1px),
+			linear-gradient(90deg, rgba(58, 125, 122, 0.1) 1px, transparent 1px);
 		background-size: 44px 44px;
 		mask-image: linear-gradient(90deg, black 0%, black 58%, transparent 86%);
 	}
@@ -122,9 +119,9 @@ const signalStats = [
 		inset: 0;
 		z-index: -1;
 		background:
-			linear-gradient(135deg, rgba(20, 184, 166, 0.24), transparent 28%),
-			linear-gradient(315deg, rgba(244, 63, 94, 0.18), transparent 34%),
-			linear-gradient(90deg, transparent 0%, rgba(248, 250, 252, 0.9) 61%, #ffffff 100%);
+			linear-gradient(135deg, rgba(58, 125, 122, 0.34), transparent 30%),
+			linear-gradient(315deg, rgba(138, 166, 163, 0.22), transparent 36%),
+			linear-gradient(90deg, transparent 0%, rgba(248, 250, 249, 0.92) 61%, #ffffff 100%);
 	}
 
 	.hero-backdrop::after {
@@ -135,7 +132,7 @@ const signalStats = [
 			180deg,
 			transparent,
 			transparent 48%,
-			rgba(125, 211, 252, 0.16) 49%,
+			rgba(138, 166, 163, 0.18) 49%,
 			transparent 50%,
 			transparent
 		);
@@ -152,8 +149,8 @@ const signalStats = [
 		display: inline-flex;
 		margin: 0 0 1rem;
 		padding: 0.35rem 0.6rem;
-		border: 1px solid rgba(125, 211, 252, 0.45);
-		color: #67e8f9;
+		border: 1px solid rgba(138, 166, 163, 0.5);
+		color: #b7d6d2;
 		font-size: 0.78rem;
 		font-weight: 700;
 		line-height: 1;
@@ -173,14 +170,14 @@ const signalStats = [
 
 	.hero h1 span {
 		display: block;
-		color: #fbbf24;
-		text-shadow: 0 0 28px rgba(251, 191, 36, 0.34);
+		color: #b7d6d2;
+		text-shadow: 0 0 28px rgba(138, 166, 163, 0.28);
 	}
 
 	.intro {
 		max-width: 650px;
 		margin: 1.4rem 0 0;
-		color: #cbd5e1;
+		color: #d8e4ee;
 		font-size: clamp(1.05rem, 2.2vw, 1.35rem);
 		line-height: 1.65;
 	}
@@ -215,13 +212,13 @@ const signalStats = [
 	}
 
 	.primary-action {
-		background: #f43f5e;
-		box-shadow: 0 14px 32px rgba(244, 63, 94, 0.28);
+		background: #3a7d7a;
+		box-shadow: 0 14px 34px rgba(58, 125, 122, 0.28);
 	}
 
 	.primary-action:hover {
-		border-color: #fda4af;
-		background: #e11d48;
+		border-color: #8aa6a3;
+		background: #2f6764;
 		color: #ffffff;
 	}
 
@@ -230,9 +227,9 @@ const signalStats = [
 	}
 
 	.ghost-action:hover {
-		border-color: #67e8f9;
+		border-color: #8aa6a3;
 		color: #ffffff;
-		background: rgba(8, 47, 73, 0.72);
+		background: rgba(47, 103, 100, 0.76);
 	}
 
 	.focus-list {
@@ -248,7 +245,7 @@ const signalStats = [
 	.focus-list li {
 		padding: 0.42rem 0.7rem;
 		border: 1px solid rgba(148, 163, 184, 0.28);
-		color: #dbeafe;
+		color: #e7f7f5;
 		font-size: 0.86rem;
 		background: rgba(15, 23, 42, 0.5);
 	}
@@ -259,7 +256,7 @@ const signalStats = [
 		justify-self: end;
 		border: 1px solid rgba(15, 23, 42, 0.16);
 		background:
-			linear-gradient(145deg, rgba(255, 255, 255, 0.92), rgba(241, 245, 249, 0.86)),
+			linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(241, 247, 246, 0.9)),
 			#ffffff;
 		box-shadow:
 			0 24px 80px rgba(15, 23, 42, 0.24),
@@ -272,8 +269,8 @@ const signalStats = [
 		inset: 0;
 		content: '';
 		background:
-			linear-gradient(90deg, rgba(20, 184, 166, 0.12), transparent 34%),
-			linear-gradient(180deg, transparent, rgba(251, 191, 36, 0.12));
+			linear-gradient(90deg, rgba(58, 125, 122, 0.16), transparent 34%),
+			linear-gradient(180deg, transparent, rgba(231, 240, 239, 0.72));
 		pointer-events: none;
 	}
 
@@ -293,16 +290,16 @@ const signalStats = [
 	.panel-topbar span {
 		width: 0.68rem;
 		height: 0.68rem;
-		background: #14b8a6;
+		background: #3a7d7a;
 	}
 
 	.panel-topbar span:nth-child(2) {
-		background: #fbbf24;
+		background: #8aa6a3;
 	}
 
 	.panel-topbar span:nth-child(3) {
 		margin-right: 0.3rem;
-		background: #f43f5e;
+		background: #b7c8c4;
 	}
 
 	.console {
@@ -322,7 +319,7 @@ const signalStats = [
 	}
 
 	.console span {
-		color: #0f766e;
+		color: #3a7d7a;
 		font-weight: 700;
 	}
 
@@ -338,7 +335,7 @@ const signalStats = [
 		display: inline-block;
 		width: 0.45rem;
 		margin-left: 0.45rem;
-		background: #67e8f9;
+		background: #8aa6a3;
 		content: '';
 		animation: blink 1s steps(1) infinite;
 	}
@@ -421,10 +418,6 @@ const signalStats = [
 	}
 
 	@media (max-width: 900px) {
-		:global(body) {
-			background: #0b1220;
-		}
-
 		.hero {
 			grid-template-columns: 1fr;
 			min-height: auto;
@@ -437,9 +430,9 @@ const signalStats = [
 
 		.hero-backdrop {
 			background:
-				linear-gradient(135deg, rgba(20, 184, 166, 0.24), transparent 36%),
-				linear-gradient(315deg, rgba(244, 63, 94, 0.18), transparent 42%),
-				#0b1220;
+				linear-gradient(135deg, rgba(58, 125, 122, 0.32), transparent 36%),
+				linear-gradient(315deg, rgba(138, 166, 163, 0.24), transparent 42%),
+				#162324;
 		}
 
 		.hero h1 {

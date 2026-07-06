@@ -5,8 +5,8 @@
  */
 
 :root {
-	--accent: #2337ff;
-	--accent-dark: #000d8a;
+	--accent: #3a7d7a;
+	--accent-dark: #2f6764;
 	--black: 15, 18, 25;
 	--gray: 96, 115, 159;
 	--gray-light: 229, 233, 240;
@@ -113,12 +113,50 @@ hr {
 	border: none;
 	border-top: 1px solid rgb(var(--gray-light));
 }
+
+::view-transition-old(root) {
+	animation: page-fade-out 180ms cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+::view-transition-new(root) {
+	animation: page-fade-in 260ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes page-fade-out {
+	from {
+		opacity: 1;
+		transform: translateY(0);
+	}
+	to {
+		opacity: 0;
+		transform: translateY(-4px);
+	}
+}
+
+@keyframes page-fade-in {
+	from {
+		opacity: 0;
+		transform: translateY(8px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
 @media (max-width: 720px) {
 	body {
 		font-size: 18px;
 	}
 	main {
 		padding: 1em;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	::view-transition-old(root),
+	::view-transition-new(root) {
+		animation: none;
 	}
 }
 
@@ -138,4 +176,102 @@ hr {
 	clip-path: inset(50%);
 	/* added line to stop words getting smushed together (as they go onto separate lines and some screen readers do not understand line feeds as a space */
 	white-space: nowrap;
+}
+
+/* Route theme fallbacks stay global so Astro client navigation cannot restore stale page colors. */
+html body .home-page {
+	background:
+		linear-gradient(115deg, rgba(22, 35, 36, 0.98), rgba(31, 55, 54, 0.95) 44%, #f8faf9 44%),
+		#162324 !important;
+}
+
+html body .home-page .hero::before {
+	background:
+		linear-gradient(rgba(138, 166, 163, 0.12) 1px, transparent 1px),
+		linear-gradient(90deg, rgba(58, 125, 122, 0.1) 1px, transparent 1px) !important;
+}
+
+html body .home-page .hero-backdrop {
+	background:
+		linear-gradient(135deg, rgba(58, 125, 122, 0.34), transparent 30%),
+		linear-gradient(315deg, rgba(138, 166, 163, 0.22), transparent 36%),
+		linear-gradient(90deg, transparent 0%, rgba(248, 250, 249, 0.92) 61%, #ffffff 100%) !important;
+}
+
+html body .home-page .eyebrow {
+	border-color: rgba(138, 166, 163, 0.5) !important;
+	color: #b7d6d2 !important;
+}
+
+html body .home-page .hero h1 span {
+	color: #b7d6d2 !important;
+	text-shadow: 0 0 28px rgba(138, 166, 163, 0.28) !important;
+}
+
+html body .home-page .primary-action {
+	background: #3a7d7a !important;
+	box-shadow: 0 14px 34px rgba(58, 125, 122, 0.28) !important;
+}
+
+html body .home-page .primary-action:hover {
+	border-color: #8aa6a3 !important;
+	background: #2f6764 !important;
+}
+
+html body .home-page .ghost-action:hover {
+	border-color: #8aa6a3 !important;
+	background: rgba(47, 103, 100, 0.76) !important;
+}
+
+html body .home-page .signal-panel::before {
+	background:
+		linear-gradient(90deg, rgba(58, 125, 122, 0.16), transparent 34%),
+		linear-gradient(180deg, transparent, rgba(231, 240, 239, 0.72)) !important;
+}
+
+html body .home-page .panel-topbar span {
+	background: #3a7d7a !important;
+}
+
+html body .home-page .panel-topbar span:nth-child(2) {
+	background: #8aa6a3 !important;
+}
+
+html body .home-page .panel-topbar span:nth-child(3) {
+	background: #b7c8c4 !important;
+}
+
+html body .home-page .console span {
+	color: #3a7d7a !important;
+}
+
+html body .about-page {
+	background: #f6f8fa !important;
+}
+
+html body .blog-page {
+	background:
+		linear-gradient(135deg, rgba(231, 240, 239, 0.82), transparent 28%),
+		linear-gradient(315deg, rgba(238, 236, 231, 0.55), transparent 32%),
+		#f6f8fb !important;
+}
+
+html body .post-page {
+	background:
+		linear-gradient(135deg, rgba(20, 184, 166, 0.08), transparent 28%),
+		linear-gradient(315deg, rgba(244, 63, 94, 0.06), transparent 32%),
+		#f8fafc !important;
+}
+
+@media (max-width: 900px) {
+	html body .home-page {
+		background: #162324 !important;
+	}
+
+	html body .home-page .hero-backdrop {
+		background:
+			linear-gradient(135deg, rgba(58, 125, 122, 0.32), transparent 36%),
+			linear-gradient(315deg, rgba(138, 166, 163, 0.24), transparent 42%),
+			#162324 !important;
+	}
 }

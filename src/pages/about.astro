@@ -63,7 +63,7 @@ const focusCards = [
 						本科阶段主要做 Web 软件开发，研究生阶段主要从事 AI 应用开发，并关注 NLP 与大模型研究方向。
 					</p>
 					<div class="about-actions" aria-label="Contact links">
-						<a class="primary-action" href={GITHUB_URL} target="_blank" rel="noreferrer">GitHub</a>
+						<a class="primary-action" href={GITHUB_URL} target="_blank" rel="noopener noreferrer">GitHub</a>
 						<a class="ghost-action" href={`mailto:${EMAIL}`}>{EMAIL}</a>
 					</div>
 				</div>
@@ -136,16 +136,13 @@ const focusCards = [
 </html>
 
 <style>
-	:global(body) {
-		background: #f3f7fb;
-	}
-
 	.about-page {
 		width: 100%;
 		max-width: none;
 		margin: 0;
 		padding: 0;
 		color: #0f172a;
+		background: #f6f8fa;
 	}
 
 	.about-hero {
@@ -157,7 +154,7 @@ const focusCards = [
 		padding: clamp(3rem, 7vw, 6rem) clamp(1.25rem, 6vw, 6rem);
 		color: #0f172a;
 		background:
-			linear-gradient(115deg, #ffffff 0%, #eef7ff 58%, #f8fafc 58%, #ffffff 100%),
+			linear-gradient(115deg, #ffffff 0%, #f1f6f5 58%, #f7faf9 58%, #ffffff 100%),
 			#f8fafc;
 		border-bottom: 1px solid rgba(15, 23, 42, 0.08);
 		overflow: hidden;
@@ -170,8 +167,8 @@ const focusCards = [
 		z-index: -2;
 		content: '';
 		background:
-			linear-gradient(rgba(15, 118, 110, 0.07) 1px, transparent 1px),
-			linear-gradient(90deg, rgba(244, 63, 94, 0.06) 1px, transparent 1px);
+			linear-gradient(rgba(58, 125, 122, 0.06) 1px, transparent 1px),
+			linear-gradient(90deg, rgba(138, 166, 163, 0.05) 1px, transparent 1px);
 		background-size: 44px 44px;
 		mask-image: linear-gradient(90deg, black 0%, black 72%, transparent 100%);
 	}
@@ -181,8 +178,8 @@ const focusCards = [
 		inset: 0;
 		z-index: -1;
 		background:
-			linear-gradient(135deg, rgba(20, 184, 166, 0.18), transparent 34%),
-			linear-gradient(315deg, rgba(244, 63, 94, 0.12), transparent 36%),
+			linear-gradient(135deg, rgba(231, 240, 239, 0.8), transparent 34%),
+			linear-gradient(315deg, rgba(226, 232, 240, 0.56), transparent 36%),
 			linear-gradient(90deg, rgba(255, 255, 255, 0.84), rgba(248, 250, 252, 0.72));
 	}
 
@@ -191,8 +188,8 @@ const focusCards = [
 		inset: 0 auto 0 0;
 		width: 4px;
 		content: '';
-		background: #0f766e;
-		opacity: 0.28;
+		background: #8aa6a3;
+		opacity: 0.22;
 	}
 
 	.about-copy {
@@ -203,8 +200,8 @@ const focusCards = [
 		display: inline-flex;
 		margin: 0 0 1rem;
 		padding: 0.35rem 0.6rem;
-		border: 1px solid rgba(15, 118, 110, 0.18);
-		color: #0f766e;
+		border: 1px solid rgba(58, 125, 122, 0.16);
+		color: #3a7d7a;
 		font-size: 0.78rem;
 		font-weight: 800;
 		line-height: 1;
@@ -214,9 +211,9 @@ const focusCards = [
 	}
 
 	.eyebrow.dark {
-		border-color: rgba(15, 118, 110, 0.2);
-		color: #0f766e;
-		background: rgba(20, 184, 166, 0.1);
+		border-color: rgba(58, 125, 122, 0.18);
+		color: #3a7d7a;
+		background: rgba(231, 240, 239, 0.72);
 	}
 
 	.about-hero h1 {
@@ -230,7 +227,7 @@ const focusCards = [
 		max-width: 760px;
 		margin: 1.35rem 0 0;
 		padding-left: 1rem;
-		border-left: 4px solid #14b8a6;
+		border-left: 4px solid #8aa6a3;
 		color: #334155;
 		font-size: clamp(1.05rem, 2.2vw, 1.35rem);
 		line-height: 1.8;
@@ -272,7 +269,7 @@ const focusCards = [
 	}
 
 	.primary-action:hover {
-		border-color: #14b8a6;
+		border-color: #8aa6a3;
 		background: #111827;
 		color: #ffffff;
 	}
@@ -291,11 +288,13 @@ const focusCards = [
 		position: relative;
 		width: min(100%, 430px);
 		justify-self: end;
-		border: 1px solid rgba(15, 23, 42, 0.18);
-		background: #0f172a;
+		border: 1px solid rgba(138, 166, 163, 0.28);
+		background:
+			linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(241, 246, 245, 0.92)),
+			#ffffff;
 		box-shadow:
-			0 24px 80px rgba(15, 23, 42, 0.22),
-			inset 0 1px 0 rgba(255, 255, 255, 0.08);
+			0 18px 54px rgba(31, 41, 51, 0.08),
+			inset 0 1px 0 rgba(255, 255, 255, 0.9);
 		overflow: hidden;
 	}
 
@@ -304,8 +303,8 @@ const focusCards = [
 		inset: 0;
 		content: '';
 		background:
-			linear-gradient(90deg, rgba(20, 184, 166, 0.18), transparent 42%),
-			linear-gradient(180deg, transparent, rgba(251, 191, 36, 0.12));
+			linear-gradient(90deg, rgba(231, 240, 239, 0.78), transparent 42%),
+			linear-gradient(180deg, transparent, rgba(226, 232, 240, 0.42));
 		pointer-events: none;
 	}
 
@@ -314,8 +313,8 @@ const focusCards = [
 		align-items: center;
 		gap: 0.5rem;
 		padding: 0.9rem 1rem;
-		border-bottom: 1px solid rgba(226, 232, 240, 0.12);
-		color: #e2e8f0;
+		border-bottom: 1px solid rgba(138, 166, 163, 0.22);
+		color: #314341;
 		font-size: 0.78rem;
 		text-transform: uppercase;
 		letter-spacing: 0.12em;
@@ -324,16 +323,16 @@ const focusCards = [
 	.panel-topbar span {
 		width: 0.68rem;
 		height: 0.68rem;
-		background: #14b8a6;
+		background: #3a7d7a;
 	}
 
 	.panel-topbar span:nth-child(2) {
-		background: #fbbf24;
+		background: #8aa6a3;
 	}
 
 	.panel-topbar span:nth-child(3) {
 		margin-right: 0.3rem;
-		background: #f43f5e;
+		background: #b7c8c4;
 	}
 
 	.identity-panel dl {
@@ -346,7 +345,7 @@ const focusCards = [
 		grid-template-columns: 0.85fr 1.15fr;
 		gap: 1rem;
 		padding: 1rem;
-		border-bottom: 1px solid rgba(226, 232, 240, 0.1);
+		border-bottom: 1px solid rgba(138, 166, 163, 0.18);
 	}
 
 	.identity-panel div:last-child {
@@ -354,7 +353,7 @@ const focusCards = [
 	}
 
 	.identity-panel dt {
-		color: #94a3b8;
+		color: #667085;
 		font-size: 0.78rem;
 		font-weight: 800;
 		text-transform: uppercase;
@@ -363,7 +362,7 @@ const focusCards = [
 
 	.identity-panel dd {
 		margin: 0;
-		color: #ffffff;
+		color: #243230;
 		font-weight: 800;
 	}
 
@@ -374,8 +373,8 @@ const focusCards = [
 
 	.focus-section {
 		background:
-			linear-gradient(rgba(15, 118, 110, 0.04) 1px, transparent 1px),
-			linear-gradient(90deg, rgba(15, 118, 110, 0.04) 1px, transparent 1px),
+			linear-gradient(rgba(138, 166, 163, 0.08) 1px, transparent 1px),
+			linear-gradient(90deg, rgba(138, 166, 163, 0.07) 1px, transparent 1px),
 			#f8fafc;
 		background-size: 36px 36px;
 	}
@@ -412,7 +411,7 @@ const focusCards = [
 		display: grid;
 		grid-template-columns: minmax(130px, 0.25fr) minmax(0, 1fr);
 		column-gap: 1.25rem;
-		border-left: 4px solid #14b8a6;
+		border-left: 4px solid #8aa6a3;
 	}
 
 	.timeline article::before {
@@ -422,9 +421,9 @@ const focusCards = [
 		width: 0.85rem;
 		height: 0.85rem;
 		content: '';
-		background: #f43f5e;
+		background: #3a7d7a;
 		border: 3px solid #ffffff;
-		box-shadow: 0 0 0 1px rgba(244, 63, 94, 0.24);
+		box-shadow: 0 0 0 1px rgba(138, 166, 163, 0.26);
 	}
 
 	.focus-grid {
@@ -454,7 +453,7 @@ const focusCards = [
 	.stage,
 	.card-stage {
 		margin: 0;
-		color: #f43f5e;
+		color: #5f7976;
 		font-size: 0.78rem;
 		font-weight: 900;
 		text-transform: uppercase;
@@ -478,7 +477,7 @@ const focusCards = [
 
 	.meta {
 		margin: 0 0 1rem;
-		color: #0f766e;
+		color: #3a7d7a;
 		font-weight: 800;
 	}
 
@@ -490,7 +489,7 @@ const focusCards = [
 
 	.timeline .stage,
 	.focus-grid .card-stage {
-		color: #f43f5e;
+		color: #5f7976;
 	}
 
 	.focus-grid {
@@ -516,8 +515,8 @@ const focusCards = [
 
 		.about-backdrop {
 			background:
-				linear-gradient(135deg, rgba(20, 184, 166, 0.18), transparent 36%),
-				linear-gradient(315deg, rgba(244, 63, 94, 0.12), transparent 42%),
+				linear-gradient(135deg, rgba(231, 240, 239, 0.78), transparent 36%),
+				linear-gradient(315deg, rgba(226, 232, 240, 0.52), transparent 42%),
 				#f8fafc;
 		}
 
